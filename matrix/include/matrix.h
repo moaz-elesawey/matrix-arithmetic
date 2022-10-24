@@ -15,11 +15,11 @@
 typedef double element;
 
 typedef struct matrix {
-	int n;
-	int m;
-	element **data;
+    int n;
+    int m;
+    element **data;
 
-	bool initialized;
+    bool initialized;
 } matrix;
 
 matrix matrix_make(int n, int m);
@@ -45,8 +45,10 @@ matrix matrix_multiply       (matrix *m1, matrix *m2);
 matrix matrix_adjunct        (matrix *m1);
 matrix matrix_transpose      (matrix *m1);
 matrix matrix_inverse        (matrix *m1);
-matrix matrix_diagonal       (matrix *m1);
-matrix matrix_orthogonal     (matrix *m1);
+
+matrix matrix_copy           (matrix *m1);
+matrix matrix_copy_row       (matrix *m1, int r);
+matrix matrix_copy_col       (matrix *m1, int c);
 
 matrix matrix_apply       (element (*pf) (element ), matrix *m1);
 

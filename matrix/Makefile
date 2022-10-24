@@ -5,7 +5,7 @@ NAME_SHARED = libmatrix.so
 NAME_STATIC = libmatrix.a
 
 SRC_DIR = src
-INC_DIR = inc
+INC_DIR = include
 OBJ_DIR = obj
 LIB_DIR = lib
 
