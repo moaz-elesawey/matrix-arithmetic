@@ -22,13 +22,13 @@ TARGET_STATIC = $(LIB_DIR)/$(NAME_STATIC)
 
 all: $(TARGET_SHARED) $(TARGET_STATIC)
 
-$(TARGET_SHARED): $(OBJS)
+$(TARGET_SHARED): $(OBJS) | $(LIB_DIR)
 	$(CC) $(CC_FLAGS) $(OBJS) -shared -o $@ $(CC_INCS) $(CC_LINKS)
 
-$(TARGET_STATIC): $(OBJS)
+$(TARGET_STATIC): $(OBJS) | $(LIB_DIR)
 	$(AR) $(AR_FLAGS) $@ $(OBJS)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
 	$(CC) $(CC_FLAGS) -c $< -o $@ $(CC_INCS)
 
 $(OBJ_DIR) $(LIB_DIR):
