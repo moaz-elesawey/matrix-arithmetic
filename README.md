@@ -10,8 +10,9 @@ $ make all
 ## Install
 add the compiled library path to the **LD_LBRARY_PATH** in `linux`
 ```sh
-$ export LD_LIBRARY_PATH=<repo-path>/matrix/lib
+$ export LD_LIBRARY_PATH=<repo-path>/matrix/lib:$LD_LIBRARY_PATH
 ```
+this will create two file in the `lib` folders named `libmatrix.so` `libmatrix.a`
 
 ## Example
 copy or write the following code into `main.c` in the same directory of the repo.
@@ -19,7 +20,7 @@ copy or write the following code into `main.c` in the same directory of the repo
 ```c
 #include "matrix.h"
 
-int main(int argc, char *argv)
+int main(int argc, char **argv)
 {
 	// create a matrix with 3x3
 	matrix m = matrix_make(3, 3);
@@ -31,7 +32,7 @@ int main(int argc, char *argv)
 	matrix_disp(&m);
 
 	// calculate inverse of the matrix
-	matrix inv = matrix_inverse(&m)
+	matrix inv = matrix_inverse(&m);
 
 	// dislplay matrix inv
 	matrix_disp(&inv);
@@ -39,6 +40,8 @@ int main(int argc, char *argv)
 	// free the memeory form the matrecies
 	matrix_free(&m);
 	matrix_free(&inv);
+
+	return 0;
 }
 ```
 
