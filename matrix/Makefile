@@ -31,6 +31,9 @@ $(TARGET_STATIC): $(OBJS)
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) $(CC_FLAGS) -c $< -o $@ $(CC_INCS)
 
+$(OBJ_DIR) $(LIB_DIR):
+	mkdir -p $@
+
 clean:
 	rm -r $(LIB_DIR)/*
 	rm -r $(OBJ_DIR)/*
